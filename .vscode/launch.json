@@ -16,7 +16,7 @@
         "MCP_VERSION": "20200515.085601",
         "FORGE_VERSION": "31.2.0",
         "assetIndex": "1.15",
-        "assetDirectory": "C:\\Users\\user\\.gradle\\caches\\forge_gradle\\assets",
+        "assetDirectory": "C:\\Users\\Foopy\\.gradle\\caches\\forge_gradle\\assets",
         "nativesDirectory": "${workspaceFolder}\\build\\natives",
         "FORGE_GROUP": "net.minecraftforge",
         "target": "fmluserdevclient",
@@ -31,7 +31,7 @@
       "projectName": "Superdometer",
       "cwd": "${workspaceFolder}\\run",
       "vmArgs": "-Dforge.logging.console.level\u003ddebug -Dforge.logging.markers\u003dSCAN,REGISTRIES,REGISTRYDUMP",
-      "args": "--mod examplemod --all --output \"E:\\Mod Development\\Superdometer\\src\\generated\\resources\"",
+      "args": "--mod examplemod --all --output C:\\Users\\Foopy\\Desktop\\Superdometer\\src\\generated\\resources",
       "env": {
         "MOD_CLASSES": "examplemod%%${workspaceFolder}\\bin\\main;examplemod%%${workspaceFolder}\\bin\\main",
         "MCP_MAPPINGS": "snapshot_20200514-1.15.1",

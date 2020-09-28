@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Specification-Title: superdometer
+Specification-Vendor: superdometersareus
+Specification-Version: 1
+Implementation-Title: Superdometer
+Implementation-Version: 1.0
+Implementation-Vendor: superdometersareus
+Implementation-Timestamp: 2020-09-28T22:30:16+0800
+

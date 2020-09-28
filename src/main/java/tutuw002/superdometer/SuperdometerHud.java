@@ -50,8 +50,9 @@ public class SuperdometerHud extends Screen {
         left += paddingX;
         top += paddingY;
 
-        this.fontRenderer.drawString(currentSpeedText, left, top, 14737632);
+        fontRenderer.drawString(currentSpeedText, left, top, 14737632);
 
+        return;
     }
 
     /* @SubscribeEvent

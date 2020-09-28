@@ -23,6 +23,7 @@ public class SuperdometerHud extends Screen
     private int fontColor;
     private Coordinate margin;
     private Align align;
+    private Unit unit;
 
     public SuperdometerHud() 
     {
@@ -32,6 +33,7 @@ public class SuperdometerHud extends Screen
         fontColor = Integer.parseInt("FFFFFF", 16);
         margin = new Coordinate(4, 4);
         align = Align.BOTTOMRIGHT;
+        unit = Unit.KMH;
 
         LOGGER.debug("hud created");
     }
@@ -39,7 +41,7 @@ public class SuperdometerHud extends Screen
     @SubscribeEvent
     public void render(RenderGameOverlayEvent.Post event) 
     {
-        String speedText = formatSpeed(getSpeed((Entity) client.player));
+        String speedText = formatSpeed(Math.sqrt(getSpeed((Entity) client.player)), unit);
         Coordinate speedPos = getTextPos(speedText, align);
 
         drawString(fontRenderer, speedText, speedPos.X, speedPos.Y, fontColor);
@@ -50,9 +52,17 @@ public class SuperdometerHud extends Screen
         return e.getDistanceSq(e.prevPosX, e.prevPosY, e.prevPosZ);
     }
 
-    private String formatSpeed(double s)
+    private String formatSpeed(double s, Unit u)
     {
-        return String.format("%.2f blocks/sec", s / 0.05F);
+        switch(u)
+        {
+            case MS:
+            return String.format("%.2f m/s", s / 0.05F);
+            case KMH:
+            return String.format("%.1f km/h", s * 72F);
+            default:
+            return String.format("%.2f b/t", s);
+        }
     }
 
     private Coordinate getTextPos(String t, Align a)
@@ -80,6 +90,13 @@ public class SuperdometerHud extends Screen
         TOPRIGHT,
         BOTTOMLEFT,
         BOTTOMRIGHT
+    }
+
+    enum Unit
+    {
+        KMH,
+        MS,
+        BPT,
     }
 
     public class Coordinate

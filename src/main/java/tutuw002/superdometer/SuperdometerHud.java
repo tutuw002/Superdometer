@@ -10,8 +10,8 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.InputEvent.KeyInputEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-
 
 public class SuperdometerHud extends Screen 
 {
@@ -60,7 +60,7 @@ public class SuperdometerHud extends Screen
             return String.format("%.2f m/s", s / 0.05F);
             case KMH:
             return String.format("%.1f km/h", s * 72F);
-            default:
+            default: //BT
             return String.format("%.2f b/t", s);
         }
     }
@@ -84,19 +84,46 @@ public class SuperdometerHud extends Screen
           }
     }
 
+    @SubscribeEvent
+    public void onKeyInput(KeyInputEvent event)
+    {
+        if (SuperdometerKeyBinding.cycleAlign.isPressed())
+        {
+            align = align.next();
+            return;
+        }
+        if (SuperdometerKeyBinding.cycleUnit.isPressed())
+        {
+            unit = unit.next();
+            return;
+        }
+    }
+
     enum Align
     {
-        TOPLEFT,
-        TOPRIGHT,
         BOTTOMLEFT,
-        BOTTOMRIGHT
+        BOTTOMRIGHT,
+        TOPLEFT,
+        TOPRIGHT;
+
+        public Align next()
+        {
+            Align[] a = values();
+            return a[(ordinal()+1) % a.length];
+        }
     }
 
     enum Unit
     {
         KMH,
         MS,
-        BPT,
+        BPT;
+
+        public Unit next()
+        {
+            Unit[] u = values();
+            return u[(ordinal()+1) % u.length];
+        }
     }
 
     public class Coordinate

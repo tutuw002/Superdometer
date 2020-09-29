@@ -6,13 +6,18 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 
-public class SuperdometerKeyBinding
+public class KeyHandler
 {
-    public static KeyBinding cycleAlign;
-    public static KeyBinding cycleUnit;
+    public KeyBinding cycleAlign;
+    public KeyBinding cycleUnit;
+
+    public KeyHandler()
+    {
+        register();
+    }
 
     @SubscribeEvent
-    public static void register()    
+    public void register()    
     {
         cycleAlign = new KeyBinding("superdometer.key.cyclealign", GLFW.GLFW_KEY_P, "key.categories.superdometer");
         cycleUnit = new KeyBinding("superdometer.key.cycleunit", GLFW.GLFW_KEY_O, "key.categories.superdometer");

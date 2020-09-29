@@ -31,7 +31,7 @@
       "projectName": "Superdometer",
       "cwd": "${workspaceFolder}\\run",
       "vmArgs": "-Dforge.logging.console.level\u003ddebug -Dforge.logging.markers\u003dSCAN,REGISTRIES,REGISTRYDUMP",
-      "args": "--mod examplemod --all --output C:\\Users\\Foopy\\Desktop\\Superdometer\\src\\generated\\resources",
+      "args": "--mod examplemod --all --output C:\\Users\\Foopy\\Downloads\\Superdometer\\src\\generated\\resources",
       "env": {
         "MOD_CLASSES": "examplemod%%${workspaceFolder}\\bin\\main;examplemod%%${workspaceFolder}\\bin\\main",
         "MCP_MAPPINGS": "snapshot_20200514-1.15.1",

@@ -18,6 +18,7 @@ public class SuperdometerHud extends Screen
     protected static final Logger LOGGER = LogManager.getLogger();
     private Minecraft client;
     private FontRenderer fontRenderer;
+    private KeyHandler keyHandler;
 
     //add these into a settings or something
     private int fontColor;
@@ -28,6 +29,7 @@ public class SuperdometerHud extends Screen
     public SuperdometerHud() 
     {
         super(new StringTextComponent("SpeedHud"));
+        keyHandler = new KeyHandler();
         client = Minecraft.getInstance();
         fontRenderer = client.fontRenderer;
         fontColor = Integer.parseInt("FFFFFF", 16);
@@ -87,15 +89,15 @@ public class SuperdometerHud extends Screen
     @SubscribeEvent
     public void onKeyInput(KeyInputEvent event)
     {
-        if (SuperdometerKeyBinding.cycleAlign.isPressed())
+        if (keyHandler.cycleAlign.isPressed())
         {
             align = align.next();
             return;
         }
-        if (SuperdometerKeyBinding.cycleUnit.isPressed())
+        if (keyHandler.cycleUnit.isPressed())
         {
             unit = unit.next();
-            return;
+            //return;
         }
     }
 
